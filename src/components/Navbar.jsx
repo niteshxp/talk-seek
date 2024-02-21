@@ -1,5 +1,7 @@
 import React from "react";
 import { AVATAR_IMG } from "../utils/constants";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Navbar = () => {
   return (
@@ -12,7 +14,10 @@ const Navbar = () => {
           alt="avatar"
         />
         <span className="mx-2 font-semibold">Arjun</span>
-        <button className="text-xs text-gray-900 bg-[#b6b6ee] rounded-xl p-1 ">
+        <button
+          onClick={() => signOut(auth)}
+          className="text-xs text-gray-900 bg-[#b6b6ee] rounded-xl p-1 "
+        >
           Logout
         </button>
       </div>
