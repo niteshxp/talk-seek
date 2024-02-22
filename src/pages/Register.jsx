@@ -19,7 +19,7 @@ const Register = () => {
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      const storageRef = ref(storage, "images/rivers.jpg");
+      const storageRef = ref(storage, displayName);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
         (error) => {
@@ -38,7 +38,7 @@ const Register = () => {
               photoURL: downloadURL,
             });
 
-            await setDoc(doc(db, "userChats", res.user.id), {});
+            await setDoc(doc(db, "userChats", res.user.uid), {});
             navigate("/");
           });
         }
